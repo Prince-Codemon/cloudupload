@@ -14,7 +14,7 @@ const App = () => {
    
     const formData = new FormData();
     formData.append("file", image);
-    const data1 = await fetch(`${process.env.REACT_APP_SERVER_URL}/upload`, {
+    const data1 = await fetch(`https://imageuploadserver.onrender.com/upload`, {
       method: "POST",
       headers: {
         'Secret-Key': process.env.REACT_APP_SECRET_KEY,
@@ -24,7 +24,7 @@ const App = () => {
 
     const res = await data1.json();
     if (data1.status === 201) {
-      setUrl(`${process.env.REACT_APP_SERVER_URL}/images/${res.url}`);
+      setUrl(`https://imageuploadserver.onrender.com/images/${res.url}`);
     } else {
       window.alert("Something Went Wrong");
     }
