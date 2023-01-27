@@ -1,38 +1,220 @@
-.App {
-  text-align: center;
+html {
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  max-height: 50vh;
+
+}
+
+.img-wrapper {
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.link {
+  text-decoration: none;
+  color: #2F80ED;
+  font-weight: 500;
+  font-size: 12px;
+  background: #F6F8FB;
+  display: flex;
+  border-radius: 8px;
+  padding: 8px 16px;
+
+
+
+
+}
+
+.link:hover {
+  background: #E0E6F8;
+}
+
+.link-wrapper button {
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #FAFAFB;
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: #2F80ED;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 12px;
+  cursor: pointer;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.heading {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 6px 0;
+  color: #4F4F4F;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.subHeading {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+
+  color: #828282;
+  margin: 10px 0;
+}
+
+.imageContainer {
+  width: 340px;
+  height: 220px;
+  border: 1px dashed #97BEF4;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 10px;
+  background-color:
+    #F6F8FB;
+  border-radius: 12px;
+
+}
+
+.dragDrop {
+  color: #BDBDBD;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+.span {
+  color: #BDBDBD;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.active {
+  box-shadow: 0 10px 10px 10px black;
+}
+
+.loadingWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 35px;
+  padding: 4px;
+}
+
+.loadingWrapper h1 {
+  font-weight: 500;
+  font-size: 18px;
+  text-align: left;
+  color: #4F4F4F;
+}
+
+.loadingWrapper .progressBar {
+  width: 100%;
+  height: 6px;
+  background: #F2F2F2;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.loadingWrapper .progressBar .bar {
+  width: 33%;
+  height: 100%;
+  background: #2F80ED;
+  border-radius: 8px;
+  animation: animate 2s infinite forwards;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0%);
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    transform: translateX(300%);
+  }
+
+}
+
+@media screen and (min-width:300px) and (max-width:500px) {
+
+
+  .imageContainer {
+    width: 100%;
+    height: 220px;
+    border: 1px dashed #97BEF4;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 10px;
+    background-color:
+      #F6F8FB;
+    border-radius: 12px;
+  }
+
+  .link-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .link {
+    max-width: 80vw !important;
+    overflow: scroll;
   }
 }

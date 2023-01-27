@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import "./App.css";
+import End from "./component/Pages/End";
+import First from "./component/Pages/First";
+import Loading from "./component/Pages/Loading";
 
-function App() {
+const App = () => {
+  const [file, setFile] = useState();
+  const [url, setUrl] = useState();
+
+  const sendImage = async (image) => {
+   
+    const formData = new FormData();
+    formData.append("file", image);
+    const data1 = await fetch(`${process.env.REACT_APP_SERVER_URL}/upload`, {
+      method: "POST",
+      headers: {
+        'Secret-Key': process.env.REACT_APP_SECRET_KEY,
+      },
+      body: formData,
+    });
+
+    const res = await data1.json();
+    if (data1.status === 201) {
+      setUrl(`${process.env.REACT_APP_SERVER_URL}/images/${res.url}`);
+    } else {
+      window.alert("Something Went Wrong");
+    }
+  };
+
+ 
+  useEffect(() => {
+    file && sendImage(file);
+  }, [file]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!file ? <First setFile={setFile} /> : file && !url ? <Loading /> : ""}
+      {url && <End url={url} src={url} />}
+    </>
   );
-}
+};
 
 export default App;
